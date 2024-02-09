@@ -42,9 +42,15 @@ class ProductsManager {
   }
 
 
-  async createOne(obj) {
+  async createOne(obj) {  
+    try {
     const result = await productsModel.create(obj);
     return result;
+  } catch (error) {
+    console.error(error)
+    throw error; 
+  }
+    
   }
 
   async findById(id) {
